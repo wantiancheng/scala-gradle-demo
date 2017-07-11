@@ -1,0 +1,73 @@
+group 'com.xiaoyue26.gradle'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'idea'
+
+apply plugin: 'application' //可选(可自动生成shell启动脚本)
+mainClassName = 'AppDemoScala'
+
+sourceCompatibility = 1.8
+repositories {
+    mavenLocal()
+    maven { url 'http://repo1.maven.org/maven2' }//自定义maven仓库地址
+    maven { url 'http://conjars.org/repo' }//自定义maven仓库地址
+    jcenter()//新的中央远程仓库，兼容maven中心仓库
+    mavenCentral()
+}
+
+dependencies {
+    //compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    zinc 'com.typesafe.zinc:zinc:0.3.9'
+    compile localGroovy()
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile "org.scala-lang:scala-library:2.12.2"
+    compile "org.scala-lang:scala-compiler:2.12.2"
+    compile "org.scala-lang:scala-reflect:2.12.2"
+    testCompile "junit:junit:4.11"
+}
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/java','src/main/scala']
+        }
+        groovy {
+            srcDirs = ['src/main/java','src/main/groovy']
+        }
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+    test {
+        scala {
+            srcDirs = ['src/test/scala']
+        }
+        groovy {
+            srcDirs = ['src/test/groovy']
+        }
+        java {
+            srcDirs = ['src/test/java']
+        }
+    }
+}
+
+task createDirs << { // 运行缩写: gradle cDirs
+    sourceSets*.scala.srcDirs*.each { it.mkdirs() }
+    sourceSets*.groovy.srcDirs*.each { it.mkdirs() }
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+// 编译 gradle compileScala
+// 生成jar包: gradle jar
+// 生成带启动脚本的可运行包: gradle installDist    缩写: gradle inD
+// 运行命令:              sh build/install/july/bin/july
+
