@@ -52,6 +52,12 @@ object TestFun {
 
     println(add2(1)(2))
 
+    // 闭包:
+    var more = 1
+    val addMore = (x: Int) => x + more
+    println(addMore(10))
+    more = 2
+    println(addMore(10))
 
   }
 
