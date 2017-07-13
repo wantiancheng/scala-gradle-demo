@@ -19,6 +19,24 @@ object TestString {
     println(fs1)
     println(fs2)
 
+    // 3. 字符串插值: s , f 和 raw
+    test3() // 也可以写test3
+
+
   }
 
+  def test3(): Unit = { // 以下特性在 2.10.0 之后生效
+    // (1) s 插值
+    val name = "James"
+    println(s"Hello,$name\n")
+    println(s"1+1=${1 + 1}") // 2
+    // (2) f 插值  太难看懂了,还是用format函数吧
+    val height = 1.9d
+    println(f"$name%s is $height%2.2f meters tall") // James is 1.90 meters tall
+
+
+    // (3) raw 插值 转义变量,不转义控制字符.
+    println(raw"a\nb$name")
+
+  }
 }
