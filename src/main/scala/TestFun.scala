@@ -22,6 +22,8 @@ object TestFun {
       def apply(x: Int): Int = x + 1 // 所有对象都有apply方法, 调用时可以直接用括号调用,如 A() 其实是调用了 A.apply()
     }
 
+    println(inc2(3))
+
     var x = inc(7) - 1
     // 多个参数:
     val mul = (x: Int, y: Int) => x * y
