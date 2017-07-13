@@ -1,8 +1,8 @@
+package learn
+
 /**
   * Created by xiaoyue26 on 17/7/12.
   */
-
-import java.io._
 
 
 class Location(override val xc: Int, override val yc: Int,
