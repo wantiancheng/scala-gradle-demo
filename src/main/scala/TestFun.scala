@@ -59,6 +59,16 @@ object TestFun {
     more = 2
     println(addMore(10))
 
+    // 函数式编程:
+    def formatArgs(args: Array[String]) = args.mkString("\n") // 类似于join
+
+    println(formatArgs(args))
+    val res = formatArgs(Array("zero", "one", "two"))
+    assert(res == "zero\none\ntwo")
+
+    Array.apply("1", "2").foreach {
+      args => println(args)
+    }
   }
 
   def log(date: Date, message: String): Unit = {
