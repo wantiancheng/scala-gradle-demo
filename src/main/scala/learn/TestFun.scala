@@ -20,7 +20,7 @@ object TestFun {
     var inc: Int => Int = (x: Int) => x + 1 // 简写: var inc = (x: Int) => x + 1
 
     // 等价写法:
-    def inc2 = new Function1[Int, Int] {
+    def inc2 = new Function1[Int, Int] { // 一个参数的函数 Function1 0个参数的函数:Function0 // 函数对象是一等公民
       def apply(x: Int): Int = x + 1 // 所有对象都有apply方法, 调用时可以直接用括号调用,如 A() 其实是调用了 A.apply()
     }
 
@@ -48,6 +48,14 @@ object TestFun {
     // def add(x:Int,y:Int)=x+y // 原函数
     def add(x: Int)(y: Int): Int = x + y // currying化后. 简写: def add(x: Int)(y: Int) = x + y
     println(add(1)(2))
+
+    // Currying的本质是scala语法支持参数列表
+    // def fun1 参数列表1,参数列表2...
+    // 参数列表1 = (参数1,参数2,参数3...)
+    def funCurryingTest()(x: Int)()(y: Int) = {
+      x + y
+    }
+
 
     // 函数指针+匿名函数 写法:
     def add2(x: Int): Int => Int = (y: Int) => x + y // 简写: def add2(x: Int) = (y: Int) => x + y

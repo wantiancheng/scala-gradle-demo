@@ -28,7 +28,7 @@ class Person(name: String, var age: Int) {
 
 
 object PersonTest { // 伴生对象, 单例
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]) {
     var person = new Person("crazyName", 100, "male")
     person.show()
     println(person)
