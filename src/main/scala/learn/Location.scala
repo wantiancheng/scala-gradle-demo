@@ -4,7 +4,7 @@ package learn
   * Created by xiaoyue26 on 17/7/12.
   */
 
-
+// 重写父类字段
 class Location(override val xc: Int, override val yc: Int,
                val zc: Int) extends Point(xc, yc) {
   var z: Int = zc
@@ -25,5 +25,6 @@ object LocationTest {
 
     // 移到一个新的位置
     loc.move(10, 10, 5)
+    println(TestClass("red"))
   }
 }
