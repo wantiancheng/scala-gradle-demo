@@ -56,6 +56,24 @@ object TestFun {
       x + y
     }
 
+    // Currying用法
+    // 第二个参数列表有一个参数,这个参数名叫thunk
+    // thunk的类型是一个无参映射, =>Any, 无参映射到Any (返回值为Any的无参函数)
+    // 函数实体是 n 次运行 thunk
+    def repeat(n: Int)(thunk: => Any): Unit = (1 to n) foreach { _ => thunk }
+
+    repeat(2) {
+      println("Hello, world")
+    }
+
+    // 参数是一个函数到Unit的函数, 前一个函数则是一个无参函数,返回是Any,任意类型
+    def twice: (=> Any) => Unit = repeat(2)
+
+
+    twice { // 类似于groovy,唯一参数时函数的时候,可以作为闭包直接传递. 省略圆括号
+      println("Hello, world")
+    }
+
 
     // 函数指针+匿名函数 写法:
     def add2(x: Int): Int => Int = (y: Int) => x + y // 简写: def add2(x: Int) = (y: Int) => x + y
