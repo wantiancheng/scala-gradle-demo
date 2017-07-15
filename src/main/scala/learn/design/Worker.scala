@@ -1,4 +1,4 @@
-package learn
+package learn.design
 
 /**
   * Created by xiaoyue26 on 17/7/14.

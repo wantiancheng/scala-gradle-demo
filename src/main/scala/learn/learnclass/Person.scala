@@ -1,4 +1,4 @@
-package learn
+package learn.learnclass
 
 /**
   * Created by xiaoyue26 on 17/7/11.

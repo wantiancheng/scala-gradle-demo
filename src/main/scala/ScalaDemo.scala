@@ -1,4 +1,4 @@
-import learn.Person
+import learn.learnclass.Person
 
 object ScalaDemo {
   def main(args: Array[String]): Unit = {

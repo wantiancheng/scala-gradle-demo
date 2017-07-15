@@ -1,4 +1,5 @@
 package learn
+import learn.design.TestSingleton
 
 /**
   * Created by xiaoyue26 on 17/7/15.
