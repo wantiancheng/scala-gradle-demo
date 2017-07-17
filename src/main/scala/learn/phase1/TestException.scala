@@ -1,4 +1,4 @@
-package learn
+package learn.phase1
 
 import java.io.{FileNotFoundException, FileReader, IOException}
 

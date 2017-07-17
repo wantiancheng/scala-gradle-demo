@@ -1,4 +1,5 @@
-package learn
+package learn.phase1
+
 import learn.design.TestSingleton
 
 /**
