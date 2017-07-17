@@ -20,7 +20,7 @@ class ChecksumAccumulator {
 }
 
 object ChecksumAccumulator { // 累加计算String的校验和
-  private val cache = mutable.Map[String, Int]()
+  private val cache = mutable.WeakHashMap[String, Int]() // 使用弱引用,这样如果内存稀缺的话，缓存里的条目就会被垃圾回收机制回收掉
 
   def calculate(s: String): Int = // 计算且缓存
     if (cache.contains(s))
