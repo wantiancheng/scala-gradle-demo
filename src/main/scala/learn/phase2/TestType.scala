@@ -70,11 +70,11 @@ object TestType extends App {
 
   def test6(): Unit = {
     import scala.reflect.runtime.universe.TypeTag
-    def f[A, B](a: A, b: B)(implicit evA: TypeTag[A], evB: TypeTag[B]) = evA == evB
-    /*def f[A, B: TypeTag](a: A, b: B) = a match {
+    //def f[A, B](a: A, b: B)(implicit evA: TypeTag[A], evB: TypeTag[B]) = evA == evB
+    def f[A, B: TypeTag](a: A, b: B) = a match {
       case _: B => "A is a B"
       case _ => "A is not a B"
-    }*/
+    }
 
     type X = Int // here
     val x: X = 5
